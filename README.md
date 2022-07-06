@@ -42,8 +42,9 @@ After the replacement, retraining, loss and prediction are normal.
 
 
 <center>
- <img src="results/00106.jpg" width="50%"/>
- <img src="results/00113.jpg" width="50%"/>
+ <img src="results/00106.jpg" width="40%"/>
+ &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+ <img src="results/00113.jpg" width="40%"/>
 </center>
 
 
