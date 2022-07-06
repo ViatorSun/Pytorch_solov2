@@ -38,14 +38,12 @@ After the replacement, retraining, loss and prediction are normal.
 
  ## Test Images 
       
-![avatar](results/00106.jpg)     
 
-![avatar](<img src="results/00106.jpg">)
 
 
 <center>
- <img src="results/00106.jpg">
- <img src="results/00106.jpg">">
+ <img src="results/00106.jpg"/>
+ <img src="results/00113.jpg"/>
 </center>
 
 
