@@ -38,9 +38,9 @@ After the replacement, retraining, loss and prediction are normal.
 
  ## Test Images 
       
-![avatar](results/00106.jpg)     
+![avatar](https://github.com/ViatorSun/Pytorch_solov2/blob/main/results/00106.jpg)     
 
-![avatar](results/00113.jpg)
+![avatar](https://github.com/ViatorSun/Pytorch_solov2/blob/main/results/00113.jpg)
 
 
 ## train
@@ -105,7 +105,7 @@ solov2_base_config = coco_base_config.copy({
     'backbone': resnet18_backbone,              #backbone
     # Dataset stuff
     'dataset': casia_SPT_val,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'num_classes': len(coco2017_dataset.class_names),
     'imgs_per_gpu': 6,
     'workers_per_gpu': 2,
     'num_gpus': 1,                       #only support single GPU for now
