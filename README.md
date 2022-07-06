@@ -41,9 +41,9 @@ After the replacement, retraining, loss and prediction are normal.
 
 
 
-<figure>
+<center>
   <img src="results/00106.jpg#pic_center" width="30%" align=left/><img src="results/00113.jpg#pic_center" width="30%" align=right/>
-</figure>
+</center>
 <br/>
 
 
