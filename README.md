@@ -38,9 +38,9 @@ After the replacement, retraining, loss and prediction are normal.
 
  ## Test Images 
       
-![avatar](https://github.com/ViatorSun/Pytorch_solov2/blob/main/results/00106.jpg)     
+![avatar](results/00106.jpg)     
 
-![avatar](https://github.com/ViatorSun/Pytorch_solov2/blob/main/results/00113.jpg)
+![avatar](results/00113.jpg)
 
 
 ## train
