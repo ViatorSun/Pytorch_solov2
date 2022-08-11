@@ -1,8 +1,10 @@
 # Pytorch solov2 project
 This code is a partial code extracted from the original code of the official author of SOLOV2 (the part of the lightweight implementation of SOLOV2_LIGHT), which does not rely on MMDetetion and MMCV. It is still relatively simple and has a lot of shortcomings to be improved. 
 
-official code： https://github.com/WXinlong/SOLO       
-paper： https://arxiv.org/abs/2003.10152 
+
+- paper： https://arxiv.org/abs/2003.10152 
+- official code： https://github.com/WXinlong/SOLO       
+
 
 ## shortages
 1、Only supports Resnet18, Resnet34 backbone to train.   
@@ -11,12 +13,28 @@ paper： https://arxiv.org/abs/2003.10152
 
 ## Install
 python 3.6+     
-pip install torch==1.5.1  torchvision==0.6.1   #Higher versions of PyTorch also tested OK         
+pip install torch==1.5.1  torchvision==0.6.1        # Higher versions of PyTorch also tested OK         
 pip install pycocotools      
 pip install numpy   
 pip install scipy    
 cd pytorch_solov2/      
 python setup.py develop      #*Install the original FocalLoss of SoloV2*
+
+
+
+## 解析
+模型定义时 cate_class 应当为 num_class，此处不应该 +1 添加背景
+主要原因是在做预测的时候，采用的focal loss损失函数，因此只对单类做sigmoid预测，所有的类都小于阈值时即为背景
+对 gt 数据解析时，预测类别从 [0, num_clas-1]，初始值全部定义为 num_clas，==「0并非背景」==
+
+
+
+
+
+
+**2022-08-10 update**  
+新增 solo v1版本，以及解耦版
+
 
 **2021-05-17 update**    
 Completely remove the dependency on MMCV
@@ -28,17 +46,17 @@ Improve the evaluation code, save it as the picture after instance segmentation,
 The implementation of FocalLoss in the latest version of MMCV-Full is different from that in the original SOLO version (the processing label of the background class is different). If the MMCV-Full FocalLoss is used for training, although the loss is reduced, the actual prediction is not accurate.
 
 So replace it with the original FocalLoss implementation. 
+
 ```
 python setup.py develop
 ```
 After the replacement, retraining, loss and prediction are normal.
 
 
+
+
  ## Test Images 
-      
-
-
-
+ 
 <div align="center">
   <img src="results/00106.jpg#pic_center" width="50%" align=left/><img src="results/00113.jpg#pic_center" width="50%" align=right/>
 </div>
@@ -116,6 +134,12 @@ solov2_base_config = coco_base_config.copy({
 ```
 - Complete Example Settings in 'data/config.py' 
 ```python
+
+
+<br>
+<br>
+
+
 # ----------------------- SOLO v2.0 CONFIGS ----------------------- #
 
 solov2_base_config = coco_base_config.copy({
@@ -123,7 +147,7 @@ solov2_base_config = coco_base_config.copy({
     'backbone': resnet18_backbone,
     # Dataset stuff
     'dataset': casia_SPT_val,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'num_classes': len(coco2017_dataset.class_names),
      #batchsize=imgs_per_gpu*workers_per_gpu
     'imgs_per_gpu': 4,
     'workers_per_gpu': 2,
